@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:c="http://java.sun.com/jsf/core"
+      xmlns:f="http://java.sun.com/jsf/facelets"
+      xmlns:composite="http://java.sun.com/jsf/composite">
+    <composite:interface>
+        <composite:attribute name="usernameLabel" />
+        <composite:attribute name="usernameValue" />
+        <composite:attribute name="passwordLabel" />
+        <composite:attribute name="passwordValue"  />
+        <composite:attribute name="loginButtonText" />
+        <composite:attribute name="loginButtonAction" 
+                             method-signature="java.lang.String action()" />
+    </composite:interface>
+
+    <composite:implementation>
+
+        <h:form class="form form-horizontal">
+            <h:message for="textPanel" style="color:red;" />
+            <label for="username" class="control-label">#{cc.attrs.usernameLabel}</label>:
+            <h:inputText id="username" value="#{cc.attrs.usernameValue}" class="form-control" required="true" />
+            <label for="password" class="control-label">#{cc.attrs.passwordLabel}</label>:
+            <h:inputSecret id="password" value="#{cc.attrs.passwordValue}" class="form-control" required="true" />
+
+            <h:commandButton class="btn btn-primary" action="#{cc.attrs.loginButtonAction}" 
+                             value="Login" 
+                             />
+            <h:commandButton type="reset" class="btn btn-default" value="Reset" />
+        </h:form>
+    </composite:implementation>
+</html>

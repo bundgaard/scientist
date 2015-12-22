@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:composite="http://java.sun.com/jsf/composite">
+    <composite:interface>
+        <composite:attribute name="nameLabel" />
+        <composite:attribute name="nameValue" required="true" />
+        <composite:attribute name="emailLabel" />
+        <composite:attribute name="emailValue" required="true" />
+        <composite:attribute name="registerButtonText" />
+        <composite:attribute name="registerButtonAction" 
+                             method-signature="java.lang.String action()" />
+    </composite:interface>
+
+    <composite:implementation>
+        <h:form class="form-horizontal">
+            <h:message for="textPanel" style="color:red;" />
+            <label for="name" class="control-label">#{cc.attrs.nameLabel}</label>: 
+            <h:inputText id="name" value="#{cc.attrs.nameValue}" class="form-control" />
+            <label for="email" class="control-label">#{cc.attrs.emailLabel}</label>:
+            <h:inputText id="email" value="#{cc.attrs.emailValue}" class="form-control" />
+
+            <h:commandButton class="btn btn-default" action="#{cc.attrs.registerButtonAction}" 
+                             value="#{cc.attrs.registerButtonText}" 
+                             />
+        </h:form>
+    </composite:implementation>
+</html>
